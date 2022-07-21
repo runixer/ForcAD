@@ -21,9 +21,9 @@ ENV PWNLIB_NOTERM=true
 ################
 
 COPY ./checkers/requirements.txt /checker_requirements.txt
-RUN pip install -r /checker_requirements.txt
-
 COPY ./checkers /checkers
+RUN apt-get update && apt-get install -y cmake libjpeg-dev libzbar-dev protobuf-compiler
+RUN pip install -r /checker_requirements.txt
 
 ########## END CUSTOMIZE ##########
 
